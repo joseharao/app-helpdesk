@@ -1,5 +1,6 @@
 package com.inforcentersistemas.helpdesk.services;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,6 +48,11 @@ public class ChamadoService {
 		if (dto.getId() != null) {
 			chamado.setId(dto.getId());
 		}
+		
+		if (dto.getStatus().equals(2)) {
+			chamado.setDataFechamento(LocalDate.now());
+		}
+		
 		chamado.setTecnico(tecnico);
 		chamado.setCliente(cliente);
 		chamado.setPrioridade(Prioridade.toEnum(dto.getPrioridade()));
@@ -54,5 +60,11 @@ public class ChamadoService {
 		chamado.setTitulo(dto.getTitulo());
 		chamado.setObservacoes(dto.getObservacoes());
 		return chamado;
+	}
+
+	public Chamado update(Integer id, @Valid ChamadoDTO dto) {
+		Chamado oldObj = this.findById(id);
+		oldObj = this.validaChamado(dto);
+		return chamadoRepository.save(oldObj);
 	}
 }
