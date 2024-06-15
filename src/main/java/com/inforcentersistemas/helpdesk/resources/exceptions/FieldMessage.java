@@ -8,6 +8,7 @@ public class FieldMessage implements Serializable {
 	
 	private String fieldName;
 	private String message;
+	
 	public FieldMessage() {
 		super();
 	}

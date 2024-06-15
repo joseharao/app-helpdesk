@@ -7,6 +7,8 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.inforcentersistemas.helpdesk.domains.enums.Perfil;
 
@@ -18,6 +20,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Email;
 @Entity
 public abstract class Pessoa implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -26,8 +29,10 @@ public abstract class Pessoa implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Integer id;
 	protected String nome;
+	@CPF
 	@Column(unique = true)
 	protected String cpf;
+	@Email
 	@Column(unique = true)
 	protected String email;
 	protected String senha;
