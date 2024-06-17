@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.inforcentersistemas.helpdesk.domains.Pessoa;
@@ -24,6 +25,7 @@ public class ClienteService {
 	@Autowired
 	private PessoaRepository pessoaRepository;
 	
+
 	public Cliente findById(Integer id) {
 		Optional<Cliente> obj = tecnicoRepository.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado no banco de dados ID: " + id));
@@ -35,6 +37,7 @@ public class ClienteService {
 
 	public Cliente Create(ClienteDTO dto) {
 		dto.setId(null);
+		dto.setSenha(dto.getSenha());
 		validaPorCpfEEmail(dto);
 		Cliente tecnico = new Cliente(dto);
 		return tecnicoRepository.save(tecnico);

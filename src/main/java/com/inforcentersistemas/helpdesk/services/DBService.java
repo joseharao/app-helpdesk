@@ -3,6 +3,7 @@ package com.inforcentersistemas.helpdesk.services;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.inforcentersistemas.helpdesk.domains.Chamado;
@@ -15,8 +16,6 @@ import com.inforcentersistemas.helpdesk.repositories.ChamadoRepository;
 import com.inforcentersistemas.helpdesk.repositories.ClienteRepository;
 import com.inforcentersistemas.helpdesk.repositories.TecnicoRepository;
 
-import jakarta.annotation.PostConstruct;
-
 @Service
 public class DBService {
 
@@ -26,6 +25,7 @@ public class DBService {
 	private ClienteRepository clienteRepository;
 	@Autowired
 	private TecnicoRepository tecnicoRepository;
+	
 	
 	public void instanciaDB() {
 		Tecnico tec1 = new Tecnico(null, "JOSE HARAO", "79723371286", "joseharao@icloud.com", "123");
