@@ -3,9 +3,9 @@ package com.inforcentersistemas.helpdesk.resources.exceptions;
 import java.io.Serializable;
 
 public class StandardError implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
-	
+
 	private long timestamp;
 	private Integer status;
 	private String error;

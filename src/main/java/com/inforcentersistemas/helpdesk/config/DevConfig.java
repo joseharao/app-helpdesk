@@ -13,13 +13,13 @@ import com.inforcentersistemas.helpdesk.services.DBService;
 public class DevConfig {
 	@Autowired
 	private DBService dbService;
-	
+
 	@Value("${spring.jpa.hibernate.ddl-auto}")
     private String value;
 	@Bean
     Boolean instanciaDB() {
 		if (value.equals("create")) {
-			this.dbService.instanciaDB();	
+			this.dbService.instanciaDB();
 			return true;
 		}
 		return false;

@@ -37,26 +37,26 @@ public class ClienteResource {
 		List<Cliente> list = clienteService.findAll();
 		List<ClienteDTO> listDTO = list.stream().map(obj -> new ClienteDTO(obj)).collect(Collectors.toList());
 		return ResponseEntity.ok(listDTO);
-		
+
 	}
-	
+
 	@PostMapping
 	public ResponseEntity<ClienteDTO> create(@Valid @RequestBody ClienteDTO dto){
 		Cliente cliente = clienteService.Create(dto);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(cliente.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
-	
+
 	@PutMapping(value="/{id}")
 	public ResponseEntity<ClienteDTO> update(@PathVariable Integer id, @Valid @RequestBody ClienteDTO dto){
 		Cliente obj = clienteService.update(id, dto);
 		return ResponseEntity.ok(new ClienteDTO(obj));
 	}
-	
+
 	@DeleteMapping(value="/{id}")
 	public ResponseEntity<ClienteDTO> delete(@PathVariable Integer id){
 		clienteService.delete(id);
 		return ResponseEntity.noContent().build();
 	}
-	
+
 }

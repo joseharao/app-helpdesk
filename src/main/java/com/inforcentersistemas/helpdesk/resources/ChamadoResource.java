@@ -27,7 +27,7 @@ import jakarta.validation.Valid;
 public class ChamadoResource {
 	@Autowired
 	private ChamadoService chamadoService;
-	
+
 	@GetMapping(value="/{id}")
 	public ResponseEntity<ChamadoDTO> findById(@PathVariable Integer id){
 		Chamado obj = chamadoService.findById(id);

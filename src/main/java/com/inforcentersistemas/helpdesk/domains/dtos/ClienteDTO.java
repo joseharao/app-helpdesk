@@ -14,7 +14,7 @@ import jakarta.validation.constraints.NotNull;
 
 public class ClienteDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	protected Integer id;
 	@NotNull(message="O Campo NOME e requerido")
 	protected String nome;
@@ -27,12 +27,12 @@ public class ClienteDTO implements Serializable {
 	protected Set<Integer> perfis = new HashSet<>();
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	protected LocalDate dataCriacao = LocalDate.now();
-	
+
 	public ClienteDTO() {
 		super();
 		addPerfil(Perfil.CLIENTE);
 	}
-	
+
 	public ClienteDTO(Cliente obj) {
 		super();
 		this.id = obj.getId();
@@ -99,6 +99,6 @@ public class ClienteDTO implements Serializable {
 	public void setDataCriacao(LocalDate dataCriacao) {
 		this.dataCriacao = dataCriacao;
 	}
-	
-	
+
+
 }

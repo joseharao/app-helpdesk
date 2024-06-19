@@ -37,26 +37,26 @@ public class TecnicoResource {
 		List<Tecnico> list = tecnicoService.findAll();
 		List<TecnicoDTO> listDTO = list.stream().map(obj -> new TecnicoDTO(obj)).collect(Collectors.toList());
 		return ResponseEntity.ok(listDTO);
-		
+
 	}
-	
+
 	@PostMapping
 	public ResponseEntity<TecnicoDTO> create(@Valid @RequestBody TecnicoDTO dto){
 		Tecnico tecnico = tecnicoService.Create(dto);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(tecnico.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
-	
+
 	@PutMapping(value="/{id}")
 	public ResponseEntity<TecnicoDTO> update(@PathVariable Integer id, @Valid @RequestBody TecnicoDTO dto){
 		Tecnico obj = tecnicoService.update(id, dto);
 		return ResponseEntity.ok(new TecnicoDTO(obj));
 	}
-	
+
 	@DeleteMapping(value="/{id}")
 	public ResponseEntity<TecnicoDTO> delete(@PathVariable Integer id){
 		tecnicoService.delete(id);
 		return ResponseEntity.noContent().build();
 	}
-	
+
 }

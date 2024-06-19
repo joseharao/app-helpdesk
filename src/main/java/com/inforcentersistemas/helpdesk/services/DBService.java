@@ -3,7 +3,7 @@ package com.inforcentersistemas.helpdesk.services;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.inforcentersistemas.helpdesk.domains.Chamado;
@@ -25,49 +25,50 @@ public class DBService {
 	private ClienteRepository clienteRepository;
 	@Autowired
 	private TecnicoRepository tecnicoRepository;
-	
-	
+	@Autowired
+    private PasswordEncoder encoder;
+
 	public void instanciaDB() {
-		Tecnico tec1 = new Tecnico(null, "JOSE HARAO", "79723371286", "joseharao@icloud.com", "123");
+		Tecnico tec1 = new Tecnico(null, "JOSE HARAO", "79723371286", "joseharao@icloud.com", encoder.encode("123"));
 		tec1.addPerfil(Perfil.ADMIN);
 
-		Cliente cli1 = new Cliente(null, "Linus Torvalds", "17840485421", "torvalds@gmail.com", "123");
+		Cliente cli1 = new Cliente(null, "Linus Torvalds", "17840485421", "torvalds@gmail.com", encoder.encode("123"));
 		cli1.addPerfil(Perfil.CLIENTE);
 
 		Chamado c1 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 01", "Observacao de chamado 01",
 				tec1, cli1);
 
-		Tecnico tec2 = new Tecnico(null, "ANTONIO DA SILVA", "45837750320", "antoniodasilva@icloud.com", "123");
+		Tecnico tec2 = new Tecnico(null, "ANTONIO DA SILVA", "45837750320", "antoniodasilva@icloud.com", encoder.encode("123"));
 		tec2.addPerfil(Perfil.ADMIN);
 
-		Cliente cli2 = new Cliente(null, "FRANCISCO", "47884875195", "francisco@gmail.com", "123");
+		Cliente cli2 = new Cliente(null, "FRANCISCO", "47884875195", "francisco@gmail.com", encoder.encode("123"));
 		cli2.addPerfil(Perfil.CLIENTE);
 
 		Chamado c2 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 02", "Observacao de chamado 02",
 				tec2, cli2);
 
-		Tecnico tec3 = new Tecnico(null, "MARIO", "44762350770", "mario@icloud.com", "123");
+		Tecnico tec3 = new Tecnico(null, "MARIO", "44762350770", "mario@icloud.com", encoder.encode("123"));
 		tec3.addPerfil(Perfil.ADMIN);
 
-		Cliente cli3 = new Cliente(null, "JOSE IVAN", "83516632399", "ivan@gmail.com", "123");
+		Cliente cli3 = new Cliente(null, "JOSE IVAN", "83516632399", "ivan@gmail.com", encoder.encode("123"));
 		cli3.addPerfil(Perfil.CLIENTE);
 
 		Chamado c3 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 03", "Observacao de chamado 03",
 				tec3, cli3);
 
-		Tecnico tec4 = new Tecnico(null, "CRISTIANO", "63413865161", "cristiano@icloud.com", "123");
+		Tecnico tec4 = new Tecnico(null, "CRISTIANO", "63413865161", "cristiano@icloud.com", encoder.encode("123"));
 		tec4.addPerfil(Perfil.ADMIN);
 
-		Cliente cli4 = new Cliente(null, "Erisvaldo", "31252721226", "erisvaldo@gmail.com", "123");
+		Cliente cli4 = new Cliente(null, "Erisvaldo", "31252721226", "erisvaldo@gmail.com", encoder.encode("123"));
 		cli4.addPerfil(Perfil.CLIENTE);
 
 		Chamado c4 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 04", "Observacao de chamado 04",
 				tec4, cli4);
 
-		Tecnico tec5 = new Tecnico(null, "Marcos", "79861255192", "marcos@icloud.com", "123");
+		Tecnico tec5 = new Tecnico(null, "Marcos", "79861255192", "marcos@icloud.com", encoder.encode("123"));
 		tec5.addPerfil(Perfil.ADMIN);
 
-		Cliente cli5 = new Cliente(null, "Joao Paulo", "66238161604", "joaopaulo@gmail.com", "123");
+		Cliente cli5 = new Cliente(null, "Joao Paulo", "66238161604", "joaopaulo@gmail.com", encoder.encode("123"));
 		cli5.addPerfil(Perfil.CLIENTE);
 
 		Chamado c5 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 05", "Observacao de chamado 05",

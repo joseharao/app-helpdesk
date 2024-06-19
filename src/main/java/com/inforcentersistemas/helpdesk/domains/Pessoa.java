@@ -24,7 +24,7 @@ import jakarta.validation.constraints.Email;
 @Entity
 public abstract class Pessoa implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Integer id;
@@ -41,7 +41,7 @@ public abstract class Pessoa implements Serializable {
 	protected Set<Integer> perfis = new HashSet<>();
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	protected LocalDate dataCriacao = LocalDate.now();
-	
+
 	public Pessoa() {
 		super();
 		addPerfil(Perfil.CLIENTE);
@@ -120,15 +120,15 @@ public abstract class Pessoa implements Serializable {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if ((obj == null) || (getClass() != obj.getClass())) {
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
+		}
 		Pessoa other = (Pessoa) obj;
 		return Objects.equals(cpf, other.cpf) && Objects.equals(id, other.id);
 	}
-	
-	
+
+
 }

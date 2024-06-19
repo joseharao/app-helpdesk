@@ -35,7 +35,7 @@ public class Chamado  implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="cliente_id")
 	private Cliente cliente;
-	
+
 	public Chamado() {
 		super();
 	}
@@ -131,16 +131,16 @@ public class Chamado  implements Serializable {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if ((obj == null) || (getClass() != obj.getClass())) {
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
+		}
 		Chamado other = (Chamado) obj;
 		return Objects.equals(id, other.id);
 	}
-	
-	
-	
+
+
+
 }
