@@ -1,0 +1,35 @@
+.container{
+  height: 100%;
+}
+.sidenav{
+  width: 13rem;
+  background-color: #363636;
+  color: white;
+  border-radius: 0%;
+}
+.topmenu{
+  text-align: center;
+  text-transform: uppercase;
+  margin: 10% 10% 10% 10%;
+}
+
+.sidenav a {
+    background-color: white;
+    border-radius: 0%;
+    float: left;
+}
+
+.nav-list{
+  color: white;
+}
+
+.sidenav i {
+  margin-right: 0.5rem;
+  float: left;
+}
+
+.menu{
+  margin: 1rem 0 0 1rem;
+  color: white;
+  background-color: #363636;
+}
