@@ -4,13 +4,13 @@
     <img src="assets/login.png" alt="">
     <mat-form-field class="full-width">
       <mat-label>E-mail de Login</mat-label>
-      <input type="email" matInput placeholder="Ex. seuemail@email.com">
+      <input type="email" [(ngModel)]="creds.email" name="email" required [formControl]="email"  matInput placeholder="Ex. seuemail@email.com">
     </mat-form-field>
 
     <mat-form-field class="full-width">
       <mat-label>Senha de Acesso</mat-label>
-      <input type="password" matInput placeholder="Ex. 123">
+      <input type="password" [(ngModel)]="creds.senha" name="senha"  required [formControl]="senha"  matInput placeholder="Ex. 123">
     </mat-form-field>
-    <button mat-flat-button class="full-width botao">Entrar no sistema</button>
+    <button (click)="login()" [disabled]="!validaCampos()" mat-flat-button class="full-width botao"><mat-icon class="mat-18">lock</mat-icon> Entrar no sistema</button>
   </form>
 </div>
