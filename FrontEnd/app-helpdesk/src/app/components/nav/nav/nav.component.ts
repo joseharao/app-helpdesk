@@ -4,14 +4,20 @@ import { MatLabel } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import { MatListItem, MatNavList } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
   standalone: true,
-  imports: [MatSidenavModule, MatButtonModule, MatNavList, MatListItem, MatIcon, MatLabel],
+  imports: [MatSidenavModule, MatButtonModule, MatNavList, MatListItem, MatIcon, MatLabel, RouterOutlet],
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.scss'
 })
 export class NavComponent {
+    constructor(private router:Router){
 
+    }
+    ngOnInit(): void{
+        this.router.navigate(["home"])
+    }
 }
