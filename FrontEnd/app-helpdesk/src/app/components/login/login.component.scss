@@ -1,0 +1,36 @@
+.container {
+  height: 100%;
+  background-color: #363636;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.form {
+  width: 30rem;
+  margin: auto;
+  background-color: rgb(235, 235, 235);
+  padding: 1rem 4rem;
+  border-radius: 1rem;
+}
+
+h4 {
+  width: 100%;
+  text-align: center;
+  font-weight: 300;
+  font-size: larger;
+}
+.full-width {
+  width: 100%;
+}
+.botao {
+  border-radius: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+img{
+  width: 8rem;
+  height: 8rem;
+  margin: auto;
+  display: flex;
+  margin-bottom: 1rem;
+}
