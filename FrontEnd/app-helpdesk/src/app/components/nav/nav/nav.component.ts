@@ -19,6 +19,6 @@ export class NavComponent {
 
     }
     ngOnInit(): void{
-        this.router.navigate(["home"])
+        //this.router.navigate(["login"])
     }
 }
