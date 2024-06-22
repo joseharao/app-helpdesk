@@ -11,11 +11,3 @@ export const interceptorInterceptor: HttpInterceptorFn = (req, next) => {
     return next(req);
   }
 };
-
-export const AutenticadorProvider = [
-  {
-    provide: HTTP_INTERCEPTORS,
-    useClass: interceptorInterceptor,
-    multi: true,
-  },
-];
