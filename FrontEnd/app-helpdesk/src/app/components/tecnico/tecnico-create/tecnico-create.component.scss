@@ -1,0 +1,33 @@
+.container{
+  width: 25rem;
+  margin: auto;
+  padding: 1rem 1rem 3rem 1rem;
+  border-radius: .6rem;
+}
+
+h4{
+  width: 100%;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+.section{
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+mat-form-field{
+  width: 100%;
+  margin-bottom: .5rem;
+}
+.cadastro{
+  width: 100%;
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.cancelar{
+  width: 100%;
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+  background-color: slateblue !important;
+}
