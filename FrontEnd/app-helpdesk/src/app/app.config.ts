@@ -1,10 +1,11 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter } from '@angular/router';
 import { provideHttpClient, withInterceptors, withInterceptorsFromDi } from '@angular/common/http';
+import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideRouter } from '@angular/router';
+import { provideNgxMask } from 'ngx-mask';
+import { provideToastr } from 'ngx-toastr';
 
 import { routes } from './app.routes';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { provideToastr } from 'ngx-toastr';
 import { interceptorInterceptor } from './security/interceptor.interceptor';
 
 export const appConfig: ApplicationConfig = {
@@ -13,9 +14,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideAnimationsAsync(),
     provideHttpClient(
-      withInterceptors([
-        interceptorInterceptor
-      ]),
+      withInterceptors([interceptorInterceptor]),
       withInterceptorsFromDi()
     ),
     provideToastr({
@@ -25,5 +24,6 @@ export const appConfig: ApplicationConfig = {
       positionClass: 'toast-top-right',
       preventDuplicates: true,
     }),
+    provideNgxMask(),
   ],
 };

@@ -2,37 +2,41 @@
     <form class="form">
           <h4>Cadastrar Técnico</h4>
           <section class="section">
-            <mat-checkbox class="margin">Admin</mat-checkbox>
-            <mat-checkbox class="margin">Cliente</mat-checkbox>
-            <mat-checkbox class="margin">Técnico</mat-checkbox>
+            <mat-checkbox (click)="addPerfil(0)" class="margin">Admin</mat-checkbox>
+            <mat-checkbox (click)="addPerfil(1)" class="margin">Cliente</mat-checkbox>
+            <mat-checkbox (click)="addPerfil(2)" class="margin">Técnico</mat-checkbox>
           </section>
 
           <mat-form-field appearance="outline">
             <mat-label>Nome</mat-label>
-            <input matInput placeholder="Nome do Técnico">
+            <input [formControl]="nome" [(ngModel)]="tecnico.nome" name="nome" required matInput placeholder="Nome do Técnico">
             <mat-icon matSuffix>account_circle</mat-icon>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
             <mat-label>CPF</mat-label>
-            <input matInput placeholder="CPF do Técnico">
+            <input [formControl]="cpf" mask="000.000.000-00"
+            required matInput
+            [(ngModel)]="tecnico.cpf" name="cpf"
+            maxlength="50"
+            placeholder="CPF do Técnico">
             <mat-icon matSuffix>pin</mat-icon>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
             <mat-label>E-mail</mat-label>
-            <input matInput type="email" placeholder="E-Mail do Técnico">
+            <input matInput [formControl]="email" [(ngModel)]="tecnico.email" name="email" required type="email" placeholder="E-Mail do Técnico">
             <mat-icon matSuffix>mail</mat-icon>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
             <mat-label>Senha</mat-label>
-            <input type="password" matInput placeholder="Senha de Acesso">
+            <input type="password" [formControl]="senha" [(ngModel)]="tecnico.senha" name="senha" required matInput placeholder="Senha de Acesso">
             <mat-icon matSuffix>password</mat-icon>
           </mat-form-field>
 
-          <button mat-flat-button class="cadastro"><mat-icon class="mat-18">save</mat-icon> Cadastrar Técnico</button>
-          <button mat-flat-button class="cancelar"><mat-icon class="mat-18">cancel</mat-icon> Cancelar Cadastro</button>
+          <button mat-flat-button (click)="create()" type="button" class="cadastro" [disabled]="!validaCampos()"><mat-icon class="mat-18">save</mat-icon> Cadastrar Técnico</button>
+          <button mat-flat-button routerLink="../" class="cancelar"><mat-icon class="mat-18">cancel</mat-icon> Cancelar Cadastro</button>
 
     </form>
 </div>
