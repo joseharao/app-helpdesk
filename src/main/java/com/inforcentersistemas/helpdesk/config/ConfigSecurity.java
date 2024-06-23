@@ -31,6 +31,7 @@ public class ConfigSecurity {
                 .cors(cors -> {
                     CorsConfiguration configuration = new CorsConfiguration();
                     configuration.applyPermitDefaultValues();
+                    configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
                     configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
                     cors.configurationSource(request -> configuration);
                 })

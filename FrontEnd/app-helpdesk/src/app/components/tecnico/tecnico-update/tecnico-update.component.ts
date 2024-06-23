@@ -5,15 +5,15 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormField } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { NgxMaskDirective } from 'ngx-mask';
-import { TecnicoService } from '../../../services/tecnico.service';
 import { ToastrService } from 'ngx-toastr';
+
 import { Tecnico } from '../../../models/tecnico';
-import { catchError, of } from 'rxjs';
+import { TecnicoService } from '../../../services/tecnico.service';
 
 @Component({
-  selector: 'app-tecnico-create',
+  selector: 'app-tecnico-update',
   standalone: true,
   imports: [
     MatCheckboxModule,
@@ -25,10 +25,10 @@ import { catchError, of } from 'rxjs';
     ReactiveFormsModule,
     NgxMaskDirective,
   ],
-  templateUrl: './tecnico-create.component.html',
-  styleUrl: './tecnico-create.component.scss',
+  templateUrl: './tecnico-update.component.html',
+  styleUrl: './tecnico-update.component.scss',
 })
-export class TecnicoCreateComponent {
+export class TecnicoUpdateComponent {
   nome: FormControl = new FormControl(null, Validators.minLength(3));
   cpf: FormControl = new FormControl(null, Validators.required);
   email: FormControl = new FormControl(null, Validators.email);
@@ -43,17 +43,40 @@ export class TecnicoCreateComponent {
     dataCriacao: '',
   };
 
-  constructor(private service: TecnicoService, private toast: ToastrService, private router:Router) {}
+  constructor(
+    private service: TecnicoService,
+    private toast: ToastrService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
-  create(): void {
-    this.service.create(this.tecnico).subscribe({
+  ngOnInit(){
+    this.tecnico.id = this.route.snapshot.paramMap.get('id');
+    this.findByID();
+  }
+
+  findByID():void{
+    this.service.findByID(this.tecnico.id).subscribe(resposta => {
+        this.tecnico = resposta;
+    });
+  }
+
+  update(): void {
+    console.error(this.tecnico);
+    this.service.update(this.tecnico).subscribe({
       next: () => {
-        this.toast.success('Técnico cadastradado com sucesso!!!');
+        this.toast.success('Técnico alterado com sucesso!!!');
         this.router.navigate(['tecnicos']);
       },
       error: (ex) => {
+        console.error('Erro ao criar técnico:', ex); // Log para depuração
+
         if (ex.error) {
-          if (ex.error.errors && Array.isArray(ex.error.errors) && ex.error.errors.length > 0) {
+          if (
+            ex.error.errors &&
+            Array.isArray(ex.error.errors) &&
+            ex.error.errors.length > 0
+          ) {
             ex.error.errors.forEach((element: any) => {
               this.toast.error(element.message);
             });
